@@ -28,6 +28,11 @@ public class SeatServiceImpl implements SeatService {
 		return seatDao.findAll();
 	}
 
+	@Override
+	public List<Seat> findByIds(int[] ids) {
+		return seatDao.findByIds(ids);
+	}
+
 
 
 }

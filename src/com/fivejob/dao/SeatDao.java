@@ -9,5 +9,7 @@ public interface SeatDao {
 	List<Seat> getSeat(int id);
 	
 	List<Seat> findAll();
+
+	List<Seat> findByIds(int[] ids);
 	
 }

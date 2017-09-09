@@ -36,7 +36,7 @@ public class SeatAction extends ActionSupport implements ModelDriven<Seat> ,Requ
 	}
 	/*************************************************************/	
 	public String findSeat() {
-		request.put("train",seat.getId());
+		request.put("train.id",seat.getId());
 		List<Seat> seats=seatService.getSeat(seat.getId());
 		System.out.println(seat.getId());
 		List<Seat> all=seatService.findAll();
@@ -45,5 +45,16 @@ public class SeatAction extends ActionSupport implements ModelDriven<Seat> ,Requ
 		return "findSeat";
 	}
 
+	public String findByIds() {
+		int ids[]= (int[]) request.get("ids");
+		List<Seat> seats=seatService.findByIds(ids);
+		System.out.println(seats.size());
+		for (Seat seat : seats) {
+			System.out.println(seat.getName());
+		}
+		ActionContext.getContext().getSession().put("seats",seats);
+		
+		return "pay";
+	}
 	
 }

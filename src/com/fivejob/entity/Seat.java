@@ -6,6 +6,15 @@ import javax.persistence.Id;
 
 @Entity
 public class Seat {
+	
+	
+
+	public Seat() {
+	}
+
+	public Seat(int id) {
+		this.id = id;
+	}
 
 	@Id
 	@GeneratedValue

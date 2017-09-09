@@ -1,11 +1,14 @@
 package com.fivejob.action;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.interceptor.RequestAware;
 import org.springframework.stereotype.Controller;
 
+import com.fivejob.entity.Seat;
 import com.fivejob.entity.Train;
 import com.fivejob.entity.User;
 import com.fivejob.service.TrainService;
@@ -15,7 +18,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("all")
 @Controller("trainAction")
-public class TrainAction extends ActionSupport implements ModelDriven<Train>{
+public class TrainAction extends ActionSupport implements ModelDriven<Train>,RequestAware{
 	
 	/*************************************************************/	
 	
@@ -25,6 +28,13 @@ public class TrainAction extends ActionSupport implements ModelDriven<Train>{
 		return train;
 	}
 	
+	
+	/*************************************************************/	
+	Map<String, Object> request;  
+	@Override
+	public void setRequest(Map<String, Object> request) {
+		this.request=request;
+	}
 	/*************************************************************/	
 	
 	@Resource
@@ -43,5 +53,6 @@ public class TrainAction extends ActionSupport implements ModelDriven<Train>{
 		ActionContext.getContext().getValueStack().set("trains", trains);
 		return "find";
 	}
+	
 	
 }
